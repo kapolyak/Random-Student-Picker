@@ -3,24 +3,26 @@ import ReactDOM from "react-dom";
 import students from '../hrnyc19';
 import NameItem from './nameItem.jsx';
 import randomize from './../helpers/randomizer.js';
-import kevins from '../kevins.js';
 
 class App extends React.Component {
-  state = {
-    studentList: students,
-    kevins: kevins,
-    randomizedStudents: null,
-    itemToAdd: '',
-    currentNumber: 1,
-    showNames: true,
-    showNormal: true,
-    showWinner: false,
-    winner: null
-  };
+  constructor(props) {
+    super(props);
 
-  handleNumberChange = this.handleNumberChange.bind(this);
-  randomizeClass = this.randomizeClass.bind(this);
-  handleWinner = this.handleWinner.bind(this);
+    this.state = {
+      studentList: students,
+      randomizedStudents: null,
+      itemToAdd: '',
+      currentNumber: 1,
+      showNames: true,
+      showNormal: true,
+      showWinner: false,
+      winner: null
+    };
+    
+    this.handleNumberChange = this.handleNumberChange.bind(this);
+    this.randomizeClass = this.randomizeClass.bind(this);
+    this.handleWinner = this.handleWinner.bind(this);
+  }
   
   randomizeClass() {
     var orderedStudents = this.state.studentList;
