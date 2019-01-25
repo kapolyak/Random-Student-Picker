@@ -1,0 +1,24 @@
+{
+  "name": "random-student-picker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "nodemon": "^1.18.8",
+    "react-transition-group": "^2.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kapolyak/Random-Student-Picker.git"
+  },
+  "author": "KAP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kapolyak/Random-Student-Picker/issues"
+  },
+  "homepage": "https://github.com/kapolyak/Random-Student-Picker#readme"
+}
