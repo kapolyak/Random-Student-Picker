@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import students from '../hrnyc19';
+import students from '../cohort-data/hrnyc20';
 import NameItem from './nameItem.jsx';
-import randomize from './../helpers/randomizer.js';
+import randomize from './../randomizer.js';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,12 +17,14 @@ class App extends React.Component {
       showNames: true,
       showNormal: true,
       showWinner: false,
-      winner: null
+      winner: null,
+      nextDay: 'Tuesday, 02/20/19'
     };
     
     this.handleNumberChange = this.handleNumberChange.bind(this);
     this.randomizeClass = this.randomizeClass.bind(this);
     this.handleWinner = this.handleWinner.bind(this);
+    this.saveWinnerToSpreadsheet = this.saveWinnerToSpreadsheet.bind(this);
   }
   
   randomizeClass() {
@@ -43,13 +46,22 @@ class App extends React.Component {
     })
   }
 
+  saveWinnerToSpreadsheet(winner) {
+    console.log('save winner to sp called', winner);
+    axios.post('/sp', {
+      winner: winner
+    });
+  }
+
   handleWinner(ind, name) {
     if (ind + 1 === this.state.currentNumber) {
       console.log('winner is', name)
       this.setState({
         showWinner: true,
         winner: name
-      })
+      }, () => {
+        this.saveWinnerToSpreadsheet(this.state.winner);
+      });
     }
   }
 
@@ -61,7 +73,7 @@ class App extends React.Component {
     if (this.state.showWinner) {
       return (
         <div style={{fontSize:"100px"}}>
-          PRESENTER IS {this.state.winner} ON 02/05/2019
+          PRESENTER IS {this.state.winner} ON {this.state.nextDay}
         </div>
       )
     }
