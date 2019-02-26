@@ -1,10 +1,12 @@
-const Express = require('express');
-const spControl = require('../../controllers/sp');
+const express = require('express');
+const helpers = require('../../../../sheets/helpers');
+// TODO: Configure Controller before uncommenting
+// const spControl = require('../../controllers/sp');
 
 module.exports = (config) => {
-  const Router = Express.Router();
+  const router = express.Router();
 
-  Server.post('/sp' /* ambiguous: Spell out */, (req, res) => {
+  rotuer.post('/' /* moved 'SP' to routes index */, (req, res) => {
     let winner = req.body.winner;
     require('../../../../sheets/googleAuth')((auth) => {
       helpers.writeWinnerToSheet(auth, winner, () => {
@@ -13,5 +15,5 @@ module.exports = (config) => {
     });
   });
 
-  return Router;
+  return router;
 };
