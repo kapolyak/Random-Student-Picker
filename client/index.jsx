@@ -18,7 +18,7 @@ class App extends React.Component {
       showNormal: true,
       showWinner: false,
       winner: null,
-      nextDay: 'Tuesday, 02/20/19'
+      nextDay: 'Tuesday, 02/26/19'
     };
     
     this.handleNumberChange = this.handleNumberChange.bind(this);

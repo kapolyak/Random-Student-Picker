@@ -3,7 +3,7 @@ const config = require('./../config.js');
 const GOOGLE_SHEET_ID = config.SPREADSHEET_ID;
 const GOOGLE_SHEET_RANGE = config.RANGE;
 
-const readSheet= (auth) => {
+const readSheet = (auth) => {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
     spreadsheetId: GOOGLE_SHEET_ID,
@@ -25,19 +25,21 @@ const readSheet= (auth) => {
 
 const writeWinnerToSheet = (auth, winner, writeCompleteCallback) => {
   const sheets = google.sheets({version: 'v4', auth});
+  const rangeAddition = '!A18';
+
   var request = {
     // The ID of the spreadsheet to update.
     spreadsheetId: GOOGLE_SHEET_ID,  // TODO: Update placeholder value.
 
     // The A1 notation of a range to search for a logical table of data.
     // Values will be appended after the last row of the table.
-    range: GOOGLE_SHEET_RANGE,  // TODO: Update placeholder value.
+    range: GOOGLE_SHEET_RANGE + rangeAddition,  // TODO: Update placeholder value.
 
     // How the input data should be interpreted.
     valueInputOption: "USER_ENTERED",  // TODO: Update placeholder value.
 
     // How the input data should be inserted.
-    insertDataOption: "INSERT_ROWS",  // TODO: Update placeholder value.
+    // insertDataOption: "INSERT_ROWS",  // TODO: Update placeholder value.
 
     resource: {
       "values": [
@@ -51,7 +53,7 @@ const writeWinnerToSheet = (auth, winner, writeCompleteCallback) => {
     auth: auth,
   };
 
-  sheets.spreadsheets.values.append(request, function(err, response) {
+  sheets.spreadsheets.values.update(request, function(err, response) {
     if (err) {
       console.error(err);
       return;

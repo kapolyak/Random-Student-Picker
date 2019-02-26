@@ -29,7 +29,6 @@
     "webpack-cli": "^3.2.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon --inspect server/index.js"
   },
