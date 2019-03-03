@@ -2,7 +2,7 @@ const express = require('express');
 const classRoutes = require('./class');
 const presentRoutes = require('./present');
 const studentRoutes = require('./student');
-const spRoutes = require('./sp');
+// const spRoutes = require('./sp');
 
 module.exports = (sqlite) => {
   let router = express.Router();
@@ -10,7 +10,7 @@ module.exports = (sqlite) => {
   router.use('/class', classRoutes(sqlite));
   router.use('/present', presentRoutes(sqlite));
   router.use('/student', studentRoutes(sqlite));
-  router.use('/sp' /* ambiguous: Spell out */, spRoutes(sqlite));
+  // router.use('/sp' /* ambiguous: Spell out */, spRoutes(sqlite));
 
   return router;
 };
