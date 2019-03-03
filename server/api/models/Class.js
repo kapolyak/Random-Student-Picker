@@ -4,13 +4,18 @@ module.exports = (sequelize, DataTypes) => {
     {
       class: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        notEmpty: true,
+        notNull: true,
         unique: true,
         set(value) {
           this.setDataValue('class', value.toLowerCase());
         }
       },
-      seniors: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: 0 }
+      seniors: {
+        type: DataTypes.BOOLEAN,
+        notEmpty: true,
+        notNull: true
+      }
     },
     {
       paranoid: true,
